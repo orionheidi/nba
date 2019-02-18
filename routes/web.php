@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/teams','TeamsController@index')->name('teams-index');
+Route::get('/teams/{id}','TeamsController@show')->name('teams-show');
+Route::get('/players/{id}','PlayerController@show')->name('players-show');
