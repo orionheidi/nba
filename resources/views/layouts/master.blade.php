@@ -12,7 +12,7 @@
 </head>
 <body>
     {{-- @include('partials.header') --}}
-    {{-- @include('partials.navbar') --}}
+    @include('partials.navbar')
     @yield('content')
     {{-- @include('partials.footer')
 </body> --}}
