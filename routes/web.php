@@ -29,6 +29,9 @@ Route::group(['middleware' => ['auth']],function(){
     Route::get('/players/{id}','PlayerController@show')->name('players-show');
 });
 
+Route::post('/comments','CommentsController@store')->name('show-comments');
+
+
 // Route::get('/teams','TeamsController@index')->name('teams-index');
 // Route::get('/teams/{id}','TeamsController@show')->name('teams-show');
 // Route::get('/players/{id}','PlayerController@show')->name('players-show');
