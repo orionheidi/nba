@@ -27,12 +27,12 @@ Route::group(['middleware' => ['auth']],function(){
     Route::get('/teams','TeamsController@index')->name('teams-index');
     Route::get('/teams/{id}','TeamsController@show')->name('teams-show');
     Route::get('/players/{id}','PlayerController@show')->name('players-show');
+    Route::get('/logout','LoginController@logout')->name('logout');
 });
 
-Route::post('/comments','CommentsController@store')->name('show-comments');
+Route::post('/teams/{teamId}/comments', ['as' => 'show-comments', 'uses' => 'CommentsController@store']);
 
 
 // Route::get('/teams','TeamsController@index')->name('teams-index');
 // Route::get('/teams/{id}','TeamsController@show')->name('teams-show');
 // Route::get('/players/{id}','PlayerController@show')->name('players-show');
-Route::get('/logout','LoginController@logout')->name('logout');

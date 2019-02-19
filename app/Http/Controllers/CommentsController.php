@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Team;
-use App\User;
+use App\Comment;
 
 class CommentsController extends Controller
 {
-    public function store($teamId,$userId)
+    public function store($teamId)
     {
-        $team = Team::findOrFail($postId);
-        $user = User::findOrFail($userId);
+        $team = Team::findOrFail($teamId);
+       
         // $request->validate([
         //     'author'=> 'required|max:5',
         //     'text' => 'required|min:30'
@@ -19,9 +19,13 @@ class CommentsController extends Controller
      
         $this->validate(request(), Comment::STORE_RULES);
 
-        $commentTeam = $team->comments()->create(request()->all());
-        $commentUser = $user->comments()->create(request()->all());
-        $comment = array_merge($commentTeam, $commentUser);
+        $commentTeam = $team->comments()->request()->all();
+        $comment = Comment::create(
+            array_merge(
+                $commentTeam,
+                ['user_id'=> auth()->user()->id]
+            )
+        );
         // return $comment;
 
         // if ($post->user) {
@@ -29,6 +33,6 @@ class CommentsController extends Controller
         //         $post, $comment
         //     ));
         // }
-        return redirect(route('teams.show', [ 'id' => $teamId ],['id2' => $userId]));
+        return redirect(route('teams-show', [ 'id' => $teamId ]));
     }
 }

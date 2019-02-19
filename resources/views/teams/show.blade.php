@@ -26,16 +26,18 @@
  <div class ="text-muted">  
      {{$comment->created_at}}
  </div>
+<p>{{$comment}}</p>
+ @if($comment->user)
      <strong>{{$comment->user->name}} says: </strong>
+ @endif
      {{ $comment->content}}
  </div>
 @endforeach
 
- {{-- <div class="container">
+ <div class="container">
 
-@foreach($team->comments as $comment) 
-    <form method="POST" action="{{ route('show-comments',['id' => $team->id],['id2' => $comment->user()->id]) }}">
-@endforeach
+    <form method="POST" action="{{ route('show-comments',['id' => $team->id]) }}">
+
 @csrf
  <div class="form-group row">
      <label for="textarea" class="col-4 col-form-label">Comment</label>
@@ -49,7 +51,7 @@
      <button type="submit" class="btn btn-primary">Submit</button>
  </div>
  </form>
-</div> --}}
+</div>
 
 @endsection 
 
