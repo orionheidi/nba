@@ -26,7 +26,6 @@
  <div class ="text-muted">  
      {{$comment->created_at}}
  </div>
-<p>{{$comment}}</p>
  @if($comment->user)
      <strong>{{$comment->user->name}} says: </strong>
  @endif

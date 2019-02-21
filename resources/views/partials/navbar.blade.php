@@ -8,10 +8,11 @@
           <a class="p-2 text-dark" href="#">Pricing</a> --}}
         </nav> 
         @if(auth()->check())
-        <span>{{ auth()->user()->name }} &nbsp</span>
-    <a class="btn btn-outline-primary" href="{{ route('logout')}}">Logout</a>
+        <a class="nav-link" href='#'>{{ auth()->user()->name }}</a>
+        <a class="btn btn-outline-primary" href="{{ route('logout')}}">Logout</a>
         @else
-    <a class="btn btn-outline-primary" href="{{ route('show-register') }}">Sign up</a>
+        <a class="btn btn-outline-primary" href="{{ route('show-register') }}">Sign up</a>
+        <a class="nav-link" href="{{ route('login') }}">Login</a>
         @endif
  </div>
 </header>

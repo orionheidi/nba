@@ -20,19 +20,21 @@ Route::group(['middleware' => ['guest']],function(){
     Route::post('/register','RegisterController@store')->name('register');
     Route::get('/login','LoginController@create')->name('show-login');
     Route::post('/login','LoginController@store')->name('login');
+    // Route::get('/logout','LoginController@destroy')->name('logout');
 });
 
 Route::group(['middleware' => ['auth']],function(){
-    // Route::get('/users/team','UserController@index')->name('users-team');
     Route::get('/teams','TeamsController@index')->name('teams-index');
     Route::get('/teams/{id}','TeamsController@show')->name('teams-show');
     Route::get('/players/{id}','PlayerController@show')->name('players-show');
-    Route::get('/logout','LoginController@logout')->name('logout');
 });
 
 Route::post('/teams/{teamId}/comments', ['as' => 'show-comments', 'uses' => 'CommentsController@store']);
-
+Route::get('/verification/{id}','LoginController@verification')->name('verification');
 
 // Route::get('/teams','TeamsController@index')->name('teams-index');
 // Route::get('/teams/{id}','TeamsController@show')->name('teams-show');
 // Route::get('/players/{id}','PlayerController@show')->name('players-show');
+// Route::get('/logout','LoginController@logout')->name('logout');
+
+Route::get('/logout','LoginController@destroy')->name('logout');

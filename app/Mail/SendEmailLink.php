@@ -31,8 +31,6 @@ class SendEmailLink extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.sentLink', [
-            'user' => $this->user,
-        ]);
+        return $this->view('emails.sentLink');
     }
 }

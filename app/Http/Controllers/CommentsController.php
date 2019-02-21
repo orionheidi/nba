@@ -5,27 +5,29 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Team;
 use App\Comment;
+use App\User;
+use App\Http\Requests\CreateCommentRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CommentsController extends Controller
 {
-    public function store($teamId)
+    public function store(CreateCommentRequest $request, $teamId)
     {
         $team = Team::findOrFail($teamId);
        
         // $request->validate([
-        //     'author'=> 'required|max:5',
-        //     'text' => 'required|min:30'
+        //     'content' => 'required | min:10',
         // ]);
      
-        $this->validate(request(), Comment::STORE_RULES);
+        // $this->validate(request(), Comment::STORE_RULES);
 
-        $commentTeam = $team->comments()->request()->all();
-        $comment = Comment::create(
-            array_merge(
-                $commentTeam,
-                ['user_id'=> auth()->user()->id]
-            )
-        );
+        // $commentTeam = $team->comments()->request()->all();
+        Comment::create([
+            'content' => $request->get('content'),
+            'team_id' => $team->id,
+            'user_id' => Auth::user()->id,
+        ]);
+
         // return $comment;
 
         // if ($post->user) {

@@ -9,9 +9,9 @@ class Comment extends Model
 
     protected $garded = ['id'];
  
-    const STORE_RULES = [
-        'content' => 'required | min:10',
-    ];
+    // const STORE_RULES = [
+    //     'content' => 'required | min:10',
+    // ];
 
     protected $fillable = [
         'team_id','user_id','content'
