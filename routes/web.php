@@ -42,3 +42,5 @@ Route::get('/verification/{id}','LoginController@verification')->name('verificat
 Route::get('/logout','LoginController@destroy')->name('logout');
 Route::get('/news','NewsController@index')->name('news-index');
 Route::get('/news/{id}','NewsController@show')->name('news-show');
+Route::get('/createNews','NewsController@create')->name('news-create');
+Route::post('/storeNews','NewsController@store')->name('news-store');
