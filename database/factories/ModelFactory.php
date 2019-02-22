@@ -31,3 +31,10 @@ $factory->define(App\News::class, function(Faker $faker){       //uvek je drugi 
         "content" => implode('',$faker->sentences(15)),
     ];
  });
+
+ $factory->define(App\TeamNews::class, function (Faker $faker) {
+    return [
+    'team_id' => App\Team::all()->random()->id,
+    'news_id' => App\News::all()->random()->id,
+    ];
+});

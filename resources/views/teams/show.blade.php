@@ -4,7 +4,19 @@
 
 
 @section('content')
+
 <div class="container"> 
+@if(count($team->news))
+<ul>
+    @foreach($team->news as $new)
+    <li>
+        <a href="{{route('news-show',['id' => $new->id])}}">{{ $new->title }}</a>
+    </li>
+{{-- {{$team->news->links()}}  --}}
+@endforeach
+</ul>
+@endif
+
 <div>{{  $team->name  }}</div>  
 <div>{{  $team->address  }}</div>
 <div>{{  $team->city  }}</div>
@@ -57,7 +69,7 @@
  </form>
 </div>
 </div>
-
+{{-- {{$news->teams()->links()}}  --}}
 @endsection 
 
 

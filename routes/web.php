@@ -29,6 +29,8 @@ Route::group(['middleware' => ['auth']],function(){
     Route::get('/players/{id}','PlayerController@show')->name('players-show');
 });
 
+
+Route::get('/team/news/{id}','TeamNewsController@index')->name('tags-posts');
 Route::post('/teams/{teamId}/comments', ['as' => 'show-comments', 'uses' => 'CommentsController@store']);
 Route::get('/verification/{id}','LoginController@verification')->name('verification');
 
