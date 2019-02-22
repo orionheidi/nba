@@ -38,3 +38,5 @@ Route::get('/verification/{id}','LoginController@verification')->name('verificat
 // Route::get('/logout','LoginController@logout')->name('logout');
 
 Route::get('/logout','LoginController@destroy')->name('logout');
+Route::get('/news','NewsController@index')->name('news-index');
+Route::get('/news/{id}','NewsController@show')->name('news-show');

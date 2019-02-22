@@ -1,39 +1,20 @@
 @extends('layouts.master')
 
-@section('title',$team->title)
+@section('title',$new->title)
 
 
 @section('content')
 <div class="container"> 
-<div>{{  $team->name  }}</div>  
-<div>{{  $team->address  }}</div>
-<div>{{  $team->city  }}</div>
-<div>{{  $team->email  }}</div>
-        <hr/>   
+<div>{{  $new->title  }}</div>  
+<div>{{  $new->content  }}</div>
+<hr/> 
+@if($new->user)
+<p>Created by {{ $new->user->name }}</p>
+@endif
+</div>
 
-    @foreach($team->players  as $player) 
-    <div class="p-4 alert alert-success">
-    <div class ="text-muted">  
-        <a href="{{ route('players-show',['id' => $team->id]) }}">{{$player->first_name}}{{$player->last_name}}</a>
-    </div>
-        
-    </div>
- @endforeach
-  
- <hr/>   
- @foreach($team->comments as $comment) 
- <div class="p-4 alert alert-success">
- <div class ="text-muted">  
-     {{$comment->created_at}}
- </div>
- @if($comment->user)
-     <strong>{{$comment->user->name}} says: </strong>
- @endif
-     {{ $comment->content}}
- </div>
-@endforeach
 
- <div class="container">
+ {{-- <div class="container">
 
     <form method="POST" action="{{ route('show-comments',['id' => $team->id]) }}">
 
@@ -55,9 +36,6 @@
      <button type="submit" class="btn btn-primary">Submit</button>
  </div>
  </form>
-</div>
-</div>
+</div> --}}
 
 @endsection 
-
-
