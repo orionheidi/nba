@@ -33,10 +33,12 @@ class CommentsController extends Controller
             'team_id' => $team->id,
             'user_id' => Auth::user()->id,
         ]);
+       // dd($comment->user);
+     
 
-        if ($comment->team->user) {
-            \Mail::to($comment->team->user)->send(new CommentReceived(
-                $comment->team, $comment
+        if ($comment->team) {
+            \Mail::to($comment->team)->send(new CommentReceived(
+                $team, $comment
             ));
         }
         return redirect(route('teams-show', [ 'id' => $teamId ]));

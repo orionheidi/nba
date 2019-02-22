@@ -69,7 +69,6 @@
  </form>
 </div>
 </div>
-{{-- {{$news->teams()->links()}}  --}}
 @endsection 
 
 

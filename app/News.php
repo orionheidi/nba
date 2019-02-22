@@ -14,6 +14,6 @@ class News extends Model
     }
 
     public function teams(){
-        return $this->belongsToMany(Team::class, 'team_news', 'team_id', 'news_id');
+        return $this->belongsToMany(Team::class, 'team_news', 'news_id', 'team_id');
     }
 }

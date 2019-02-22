@@ -36,7 +36,7 @@ class LoginController extends Controller
 
             if(auth()->user()->is_verified) {
 
-                return redirect()->route('teams-index');
+                return redirect()->route('teams.index');
 
             } else {
 

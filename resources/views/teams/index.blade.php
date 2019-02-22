@@ -29,7 +29,7 @@ All teams
 
     </div><!-- /.row -->
   </main><!-- /.container -->
-   
+  {{$teams->links()}}   
 @endsection 
 
 <style>

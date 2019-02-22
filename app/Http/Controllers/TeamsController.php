@@ -16,7 +16,7 @@ class TeamsController extends Controller
     public function index()
     {
         $user = auth()->user(); 
-        $teams = Team::all()->pagination(10);
+        $teams = Team::with('news')->paginate(1);
         return view('teams.index',compact('teams'));
     }
 
@@ -51,7 +51,7 @@ class TeamsController extends Controller
     public function show($id)
     {
         $user = auth()->user(); 
-        $team = Team::findOrFail($id);
+        $team = Team::with('news')->findOrFail($id);
         // return $team;
         // \Log::info($id);
         return view('teams.show',compact('team'));

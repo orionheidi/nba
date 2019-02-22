@@ -15,12 +15,19 @@ class NewsController extends Controller
         return view('news.index',compact('news'));
     }
 
-    public function show(Team $teams,$id)
+    public function sideBar($id)
+    {
+        $news = Team::find($id)->news()->paginate(10);
+        return view('news.index',compact('news'));
+    }
+
+    public function show($id)
     {
         $user = auth()->user(); 
-        $teams = Team::all();
-        $new = News::findOrFail($id);
-        return view('news.show',compact('teams','new'));
+        $new = News::with('teams')->findOrFail($id);
+       // dd($new);
+        //dd($new->teams);
+        return view('news.show',compact('new'));
     }
 
     public function create()

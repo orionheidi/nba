@@ -11,7 +11,7 @@
         <a class="nav-link" href='#'>{{ auth()->user()->name }}</a>
         <a class="btn btn-outline-primary" href="{{ route('logout')}}">Logout</a>
         @else
-        <a class="btn btn-outline-primary" href="{{ route('show-register') }}">Sign up</a>
+        <a class="btn btn-outline-primary" href="{{ route('register') }}">Sign up</a>
         <a class="nav-link" href="{{ route('login') }}">Login</a>
         @endif
  </div>

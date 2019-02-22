@@ -12,7 +12,7 @@ class TeamNewsController extends Controller
     {
         // $tag = Tag::all();
 
-        $teams =$news->teams()->paginate(10);
+        $teams = $news->teams()->paginate(10);
         return view('teams.index',compact('teams'));
     }
 }
