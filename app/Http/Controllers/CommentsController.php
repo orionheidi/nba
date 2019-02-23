@@ -21,13 +21,6 @@ class CommentsController extends Controller
     {
         $team = Team::findOrFail($teamId);
        
-        // $request->validate([
-        //     'content' => 'required | min:10',
-        // ]);
-     
-        // $this->validate(request(), Comment::STORE_RULES);
-
-        // $commentTeam = $team->comments()->request()->all();
         $comment = Comment::create([
             'content' => $request->get('content'),
             'team_id' => $team->id,
@@ -35,7 +28,6 @@ class CommentsController extends Controller
         ]);
        // dd($comment->user);
      
-
         if ($comment->team) {
             \Mail::to($comment->team)->send(new CommentReceived(
                 $team, $comment

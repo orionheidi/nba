@@ -7,10 +7,10 @@ use App\User;
 
 class LoginController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('guest', ['except' => 'destroy']);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('guest', ['except' => 'destroy']);
+    // }
 
     // public function logout(){
     //     auth()->logout();
@@ -51,23 +51,22 @@ class LoginController extends Controller
          // return redirect('/teams');
     }
 
-        public function verification($id)
-        {
-            $user = User::findOrFail($id);
+    public function verification($id)
+    {
+        $user = User::findOrFail($id);
 
-            $user->is_verified = true;
-            $user->save();
+        $user->is_verified = true;
+        $user->save();
 
-            return view('auth.verification',compact('user'));
-        }
+        return view('auth.verification',compact('user'));
+    }
 
-        public function destroy () {
+    public function destroy () {
 
-            auth()->logout();
-    
-            return redirect()->route('login');
-    
-        }
-    
+        auth()->logout();
+
+        return redirect()->route('login');
+
+    }    
 
 }

@@ -12,8 +12,6 @@ class PlayerController extends Controller
     {
         $user = auth()->user(); 
         $player = Player::findOrFail($id);
-        // return $team;
-        // \Log::info($id);
         return view('players.show',compact('player'));
     }
 }
