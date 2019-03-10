@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-
-    protected $garded = ['id'];
  
     protected $fillable = [
         'team_id','user_id','content'

@@ -34,18 +34,12 @@ Route::group(['middleware' => ['auth']],function(){
     Route::get('/createNews','NewsController@create')->name('news-create');
     Route::post('/storeNews','NewsController@store')->name('news-store');
     Route::get('/team/news/{id}','TeamNewsController@index')->name('tags-posts');
-Route::post('/teams/{teamId}/comments', ['as' => 'show-comments', 'uses' => 'CommentsController@store']);
+    Route::post('/teams/{teamId}/comments', ['as' => 'show-comments', 'uses' => 'CommentsController@store']);
 });
 
-
-// Route::get('/team/news/{id}','TeamNewsController@index')->name('tags-posts');
-// Route::post('/teams/{teamId}/comments', ['as' => 'show-comments', 'uses' => 'CommentsController@store']);
 Route::get('/verification/{id}','LoginController@verification')->name('verification');
 
 Route::get('/logout','LoginController@destroy')->name('logout');
-// Route::get('/news','NewsController@index')->name('news-index');
-// Route::get('/news/{id}','NewsController@show')->name('news-show');
-// Route::get('/createNews','NewsController@create')->name('news-create');
-// Route::post('/storeNews','NewsController@store')->name('news-store');
+
 
 // Route::resource('teams','TeamsController');

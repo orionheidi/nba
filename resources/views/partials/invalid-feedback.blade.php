@@ -1,5 +1,9 @@
 <div class="invalid-feedback">
     @if($errors->has($field))
-    {{ $errors->get($field)[0] }}
+    @foreach($errors->get($field) as $error)
+        <li>{{ $error }}</li>
+    @endforeach
     @endif
 </div>
+
+{{-- {{ $errors->get($field)[0] }} --}}
